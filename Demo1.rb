@@ -155,7 +155,7 @@
 # }
 
 
-# BEGIN { #this block will execute at the begning 
+# BEGIN { #this block will execute at the beginning 
 #     puts "This is a Begin block"
 # }
 # END { #this block will execute at the end
@@ -167,16 +167,224 @@
 # puts "This is a middle code 3"
 
 
+# ─── Hash ───────────────────────────────────────────────────────────────────────
+#https://zetcode.com/lang/rubytutorial/hashes/
+
+# x = {
+#     "name" => "Ram Prabesh",
+#     "age" => 43,
+#     "sex" => "male"
+# }
+
+# x = Hash.new
+# x["name"] = "Ram Prabesh"
+# x["age"] = 43
+# x["sex"] = "Male"
+
+# puts x["name"] #print only "name" key and their value
+# puts x.keys.inspect #prints all keys name 
+# puts x.values.inspect #prints all keys values
+# puts x.size #count all keys 
 
 
+# ─── Each Loop And Multidimensional Array ───────────────────────────────────────
+
+# #Each loop
+# x = ["One", "Two", "Three", "Four", "Five"]
+# for i in x 
+#     puts i
+# end 
 
 
+# #Multidimensional array or we can say array destructuring 
+# array = [["One", "Two"], ["Three", "Four"], ["Five", "Six"]]
+# puts array[1][1] #output ~> Four
+# puts array[1][1][3] #output ~> r
 
 
+# ─── Files ──────────────────────────────────────────────────────────────────────
+
+#First create sample.txt file and put some data inside it 
+
+# file = File.new("sample.txt", "r") #"r" = read mode 
+# if file 
+#     content = file.sysread(50) #to read only 50 characters
+#     puts content 
+# else 
+#     puts "unable to open file"
+# end 
 
 
+# file = File.new("sample.txt", "r+") #"r+" = read + write mode
+# if file 
+#     file.syswrite("ABCD1234") #add data to sample.txt 
+# else 
+#     puts "unable to open file"
+# end 
 
 
+# File.zero?("sample.txt") #file is empty or not
+# File.size?("sample.txt") #check file size
+# File.ftype("sample.txt") #check file type
+# File.rename("sample.txt", "test.txt") #to rename the file 
+# File.delete("test.txt") #to delete file
+
+
+# ─── Variable And Class ─────────────────────────────────────────────────────────
+
+# [a-z] or _ = Local Variable
+# @ = Instance Variable
+# @@ = Class Variable
+# $ = Global Variable
+
+
+# class Customer
+#     def initialize(id, name, addr)
+#         #Instance Variables     
+#         @cust_id = id
+#         @cust_name = name
+#         @cust_addr = addr
+#     end
+      
+#     #displaying result
+#     def display_details()
+#         puts "Customer id #@cust_id"
+#         puts "Customer name #@cust_name"
+#         puts "Customer address #@cust_addr"
+#     end
+# end
+     
+# #Create Objects
+# cust1 = Customer.new("1", "John", "Wisdom Apartments, Ludhiya")
+# cust2 = Customer.new("2", "Poul", "New Empire road, Khandala")
+# #Call Methods
+# cust1.display_details()
+# cust2.display_details()
+
+
+# ─── Getter And Setter ──────────────────────────────────────────────────────────
+
+# #Method 1 to create Setter and Getter 
+# class Box 
+#     def initialize(x,y) #initialize method is useful when we want to initialize some class variables at the time of object creation.
+#         @width, @height = x, y #using Instance Variable
+#     end 
+    
+#     #Setter will reset the value of initialize method
+#     def setWidth=(x)
+#         @width = x
+#     end 
+#     def setHeight=(y)
+#         @height = y 
+#     end
+    
+#     #Getter will take the value 
+#     def dispWidht 
+#         return @width
+#     end 
+#     def dispHeight 
+#         return @height
+#     end 
+# end
+
+# objBox = Box.new(10,20) #automatically initialize method will call 
+# objBox.setWidth = 100
+# objBox.setHeight = 200
+# puts objBox.dispWidht
+# puts objBox.dispHeight
+
+# ────────────────────────────────────────────────────────────────────────────────
+
+# #Method 2 to create Setter and Getter 
+# class Container 
+#     #setter 
+#     attr_writer:name, :age
+
+#     #getter
+#     attr_reader:name, :age
+# end
+
+# a = Container.new #making object
+# a.name = "Ram Prabesh"
+# a.age = 84
+# puts a.name
+# puts a.age
+
+# ────────────────────────────────────────────────────────────────────────────────
+
+# #Method 3 to create Setter and Getter 
+# class Container 
+#     #setter and getter both in single line 
+#     attr_accessor:name, :age
+# end
+
+# a = Container.new #making object
+# a.name = "Ram Prabesh"
+# a.age = 84
+# puts a.name
+# puts a.age
+
+# ────────────────────────────────────────────────────────────────────────────────
+
+# #"to_s" this method will convert every return value into string
+# class Container 
+#     #setter and getter both in single line 
+#     attr_accessor:name, :age
+
+#     def to_s 
+#         return "my name is #{name}, and my age is #{age}"
+#     end 
+# end
+
+# a = Container.new #making object
+# a.name = "Ram Prabesh"
+# a.age = 84
+# puts a
+# puts "#{a}"
+
+
+# ─── Class Variable ─────────────────────────────────────────────────────────────
+
+# class Rock 
+#     @@count = 0
+
+#     def initialize(x,y)
+#         @width = x
+#         @height = y
+#         @@count += 1
+#     end 
+
+#     def print
+#         puts "#{@@count}"
+#         puts "#{@width}"
+#         puts "#{@height}"
+#     end
+# end 
+
+# obj_1 = Rock.new(10,20) #when this execute "@@count = 1" 
+# obj_2 = Rock.new(55,22) #when this execute "@@count = 2" 
+
+# #class variable value will be same it won't vary object wise
+# obj_1.print
+# obj_2.print
+
+
+# ─── Inheritance ────────────────────────────────────────────────────────────────
+
+# class Person
+#     attr_accessor:name,:age
+# end 
+
+# class Sportsman < Person #now "Sportsman" method can access "Person" method data 
+#     attr_accessor:sport 
+# end 
+
+# obj = Sportsman.new
+# obj.name="Ram Prabesh"
+# obj.age=53
+# obj.sport="Football"
+# puts obj.inspect
+# puts "Your name is #{obj.name}, age #{obj.age} and you play #{obj.sport}"
 
 
 
