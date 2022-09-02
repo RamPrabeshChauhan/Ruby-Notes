@@ -386,6 +386,75 @@
 # puts obj.inspect
 # puts "Your name is #{obj.name}, age #{obj.age} and you play #{obj.sport}"
 
+# ────────────────────────────────────────────────────────────────────────────────
+
+# class Animal 
+#     attr_accessor:color, :name
+# end 
+
+# class Details < Animal
+
+#     def initialize(name, color)
+#         @name = name #"@name" comes from "Animal" method 
+#         @color = color 
+#     end
+
+#     def speak 
+#         return "meeeowwwww"
+#     end 
+    
+# end
+
+# obj = Details.new("Cat", "Brown")
+# puts obj.inspect
+# puts "You have a #{obj.name} whose color is #{obj.color} and she makes a sound..... #{obj.speak}"
+
+
+# ─── Method Overriding ──────────────────────────────────────────────────────────
+
+# class Area 
+#     def initialize(length, breadth)
+#         @length = length
+#         @breadth = breadth
+#     end
+
+#     def getArea
+#         return "the area of rectangle is #{@length*@breadth}"
+#     end
+# end 
+
+# class Rectangle < Area #"Area" is parent and "Rectangle" is child
+#     def getArea #overriding parent method 
+#         puts super() #it will hold the parent method data
+#         return "the perimeter of rectangle is #{@length*@breadth*2} "
+#     end
+# end
+
+# obj = Rectangle.new(10,20)
+# puts obj.getArea
+
+
+# ─── Freeze ─────────────────────────────────────────────────────────────────────
+
+# class Box 
+#     attr_accessor:width, :height
+#     def initialize(w,h)
+#         @width = w
+#         @height = h
+#     end 
+# end 
+
+# obj = Box.new(10,50)
+# puts obj.width
+# puts obj.height
+
+# obj.freeze #we can't modify "Box" method data
+
+# if(obj.frozen?)
+#     puts "Box is freeze"
+# else
+#     puts "Box is not freeze"
+# end 
 
 
 
